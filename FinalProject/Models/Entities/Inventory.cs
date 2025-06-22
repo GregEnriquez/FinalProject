@@ -1,5 +1,7 @@
 ﻿namespace FinalProject.Models.Entities
 {
+
+    // Represents a single inventory record in the database
     public class Inventory
     {
         public int Id { get; set; }
@@ -9,4 +11,5 @@
         public DateTime DateSold { get; set; }
         public string ItemType { get; set; }
     }
+
 }

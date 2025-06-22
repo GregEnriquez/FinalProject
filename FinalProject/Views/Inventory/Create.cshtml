@@ -4,10 +4,16 @@
     ViewData["Title"] = "Add New Item";
 }
 
+<!-- Main container -->
 <div class="container">
+
+    <!-- Title -->
     <h2 class="text-center mb-4" style="color: #594100">Add New Item</h2>
 
+    <!-- Form for adding new inventory item -->
     <form method="post">
+
+        <!-- First row: item name and amount sold inputs -->
         <div class="row mb-3">
             <div class="col-md-6">
                 <label class="form-label"> Item Name </label>
@@ -18,6 +24,8 @@
                 <input asp-for="AmountSold" class="form-control" type="number" style="border: 2px solid #594100;" />
             </div>
         </div>
+
+        <!-- Second row: total price and date sold inputs -->
         <div class="row mb-3">
             <div class="col-md-6">
                 <label class="form-label"> Total Price </label>
@@ -28,12 +36,16 @@
                 <input asp-for="DateSold" class="form-control" type="date" style="border: 2px solid #594100;" />
             </div>
         </div>
+
+        <!-- Third row: item type input -->
         <div class="row mb-3">
             <div class="col-md-6">
                 <label class="form-label"> Item Type</label>
                 <input asp-for="ItemType" class="form-control" style="border: 2px solid #594100;" />
             </div>
         </div>
+
+        <!-- Fourth row: save button and back icon -->
         <div class="row">
             <div class=" col-md-6 offset-md-6 d-flex justify-content-end">
                 <a asp-action="Index" class="btn font-size: 1.5rem;" title="Back to List"><i class="bi bi-backspace fs-4"></i></a>
@@ -44,5 +56,6 @@
                 </button>
             </div>
         </div>
+
     </form>
 </div>

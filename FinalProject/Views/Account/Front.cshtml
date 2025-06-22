@@ -2,16 +2,22 @@
     ViewData["Title"] = "Welcome";
 }
 
+<!-- Main container -->
 <div style="
     background-color: #fff7e6;
     height: 90vh;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-">
+    align-items: center;">
+
+    <!-- Column container for stacking buttons -->
     <div class="d-flex flex-column align-items-center gap-3" style="width: 400px;">
+        
+        <!-- Login and register buttons -->
         <a asp-action="Login" class="btn w-100 fw-bold" style="background-color: #CA7842; color: #3B060A;">LOGIN</a>
         <a asp-action="Register" class="btn w-100 fw-bold" style="background-color: #E9A319; color: #3B060A;">REGISTER</a>
+    
     </div>
+
 </div>

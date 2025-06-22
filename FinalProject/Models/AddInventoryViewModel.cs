@@ -1,5 +1,7 @@
 ﻿namespace FinalProject.Models
 {
+
+    // ViewModel used for adding new inventory items through forms
     public class AddInventoryViewModel
     {
         public string ItemName { get; set; }
@@ -8,4 +10,5 @@
         public DateTime DateSold { get; set; }
         public string ItemType { get; set; }
     }
+
 }

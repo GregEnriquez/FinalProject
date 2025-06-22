@@ -4,10 +4,14 @@
     ViewData["Title"] = "Inventory List";
 }
 
+<!-- Title -->
 <h2 class="text-center mb-4" style="color: #594100">Inventory List</h2>
 
+<!-- Table container -->
 <div style="border: 5px solid #594100; border-radius: 10px; overflow: hidden;">
     <table class="table table-hover table-striped mb-0">
+
+        <!-- Table header -->
         <thead class="text-center" style="background-color: #FBDB93; color: #594100">
             <tr>
                 <th>Item Name</th>
@@ -18,15 +22,21 @@
                 <th> </th>
             </tr>
         </thead>
+
+        <!-- Table body -->
         <tbody style="background-color: #FCEFCB; color: #594100">
+
+            <!-- Display message when there is no data -->
             @if (!Model.Any())
             {
                 <tr>
                     <td colspan="6" class="text-center">No data yet.</td>
                 </tr>
             }
+
             else
             {
+                <!--Loop through each inventory item and display its details -->
                 @foreach (var inventory in Model)
                 {
                     <tr class="text-center">
@@ -36,11 +46,14 @@
                         <td>@inventory.DateSold.ToShortDateString()</td>
                         <td>@inventory.ItemType</td>
                         <td>
+
+                            <!-- Edit button for each inventory item -->
                             <a class="btn fw-bold" style="background-color: #DCA06D; color: #594100;"
                                 onmouseover="this.style.backgroundColor='#E9A319'"
                                 onmouseout="this.style.backgroundColor='#DCA06D'"
                                 asp-controller="Inventory" asp-action="Edit" asp-route-id="@inventory.Id"> Edit </a>
-                        </td>
+                        
+                            </td>
                     </tr>
                 }
             }
@@ -48,6 +61,7 @@
     </table>
 </div>
 
+<!-- Button for adding new item -->
 <div class="d-flex justify-content-end mt-3">
     <a asp-action="Create" class="btn fw-bold" style="background-color: #DCA06D; color: #594100;"
        onmouseover="this.style.backgroundColor='#E9A319'"

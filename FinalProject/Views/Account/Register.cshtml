@@ -4,6 +4,7 @@
     ViewData["Title"] = "Register";
 }
 
+<!-- Main container -->
 <div style="
     background-color: #fff7e6;
     min-height: 90vh;
@@ -12,19 +13,30 @@
     justify-content: center;
     padding-top: 100px;">
 
+    <!-- Inner container -->
     <div style="width: 100%; max-width: 500px;">
+
+        <!-- Title -->
         <h2 class="text-center mb-4" style="color: #594100">Register</h2>
 
+        <!-- Registration form -->
         <form asp-action="Register" method="post">
+
+            <!-- Username input -->
             <div class="mb-3">
                 <label asp-for="Username" class="form-label">Username</label>
                 <input asp-for="Username" class="form-control" style="border: 2px solid #594100;" />
             </div>
+
+            <!-- Password input -->
             <div class="mb-3">
                 <label asp-for="Password" class="form-label">Password</label>
                 <input asp-for="Password" type="password" class="form-control" style="border: 2px solid #594100;" />
             </div>
-             <button type="submit" class="btn w-100 fw-bold" style="background-color: #E9A319; color: #3B060A;">Register</button>
+
+            <!-- Register button -->
+            <button type="submit" class="btn w-100 fw-bold" style="background-color: #E9A319; color: #3B060A;">Register</button>
+        
         </form>
     </div>
 </div>

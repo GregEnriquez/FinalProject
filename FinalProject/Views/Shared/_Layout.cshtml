@@ -1,33 +1,48 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
     <head>
+
+        <!-- Metadata and title -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>@ViewData["Title"] - FinalProject</title>
+
+        <!-- CSS references -->
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/FinalProject.styles.css" asp-append-version="true" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
     </head>
     <body style="margin: 0; background-color: #fff7e6;">
+
+        <!-- Gets the name of the current controller and action for conditional logic -->
         @{
             var currenttController = ViewContext.RouteData.Values["controller"]?.ToString();
             var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
         }
+
+        <!-- Only show navbar if controller is not 'Account' -->
         @if (!(currenttController == "Account"))
         {
             <header>
                 <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #DCA06D;">
                     <div class="container-fluid">
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                            aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
+
+                        <!-- Navbar links -->
                         <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                             <ul class="navbar-nav flex-grow-1">
+
+                                <!-- Used to determine the active controller -->
                                 @{
                                     var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
                                 }
+
+                                <!-- Inventory link: highlights when on inventory controller -->
                                 <li class="nav-item">
                                     <a class="nav-link @(currentController == "Inventory" ? "fw-bold border-bottom border-3 border-primary text-dark" : "text-dark")"
                                         style="@(currentController == "Inventory"
@@ -35,7 +50,10 @@
                                         : "color: #E9A319;")"
                                         asp-area="" asp-controller="Inventory" asp-action="Index"><i class="bi bi-boxes"></i>  Inventory</a>
                                 </li>
+
                             </ul>
+
+                            <!-- Logout button -->
                             <ul class="navbar-nav">
                                 @if (Context.Session.GetString("Username") != null)
                                 {
@@ -47,20 +65,24 @@
                                 }
                             </ul>
                         </div>
+
                     </div>
                 </nav>
             </header>
         }
 
+        <!-- Main container -->
         <div class="container">
             <main role="main" class="pb-3">
                 @RenderBody()
             </main>
         </div>
 
+        <!-- JavaScript files -->
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
         @await RenderSectionAsync("Scripts", required: false)
+    
     </body>
 </html>

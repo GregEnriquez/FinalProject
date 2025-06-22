@@ -10,20 +10,20 @@ namespace FinalProject.Controllers
     {
         private readonly ApplicationDbContext dbContext;
 
-        //Creates dbContext
+        // Creates dbContext
         public InventoryController(ApplicationDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
 
-        //Goes to Create Page
+        // Goes to Create Page
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        //Adds form items to inventory once in create page
+        // Adds form items to inventory once in create page
         [HttpPost]
         public async Task<IActionResult> Create(AddInventoryViewModel viewModel)
         {
@@ -42,7 +42,7 @@ namespace FinalProject.Controllers
             return RedirectToAction("Index");
         }
 
-        //Shows database in page
+        // Shows database in page
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -51,7 +51,7 @@ namespace FinalProject.Controllers
             return View(inventory);
         }
 
-        //Gets the item with the specific Id and puts them to the Edit page
+        // Gets the item with the specific Id and puts them to the Edit page
         [HttpGet]
         public async Task<IActionResult> Edit(int Id)
         {
@@ -60,7 +60,7 @@ namespace FinalProject.Controllers
             return View(inventory);
         }
 
-        //Edits the database with the changes made to the form and shows it in Index
+        // Edits the database with the changes made to the form and shows it in Index
         [HttpPost]
         public async Task<IActionResult> Edit(Inventory viewModel)
         {
@@ -80,7 +80,7 @@ namespace FinalProject.Controllers
             return RedirectToAction("Index");
         }
 
-        //Deletes an item with the found Id from the database
+        // Deletes an item with the found Id from the database
         [HttpPost]
         public async Task<IActionResult> Delete(Inventory viewModel)
         {
@@ -93,5 +93,6 @@ namespace FinalProject.Controllers
 
             return RedirectToAction("Index");
         }
+
     }
 }
