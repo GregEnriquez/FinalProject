@@ -1,8 +1,9 @@
-﻿@model IEnumerable<FinalProject.Models.Inventory>
+﻿@model List<FinalProject.Models.Entities.Inventory>
 
 @{
     ViewData["Title"] = "Inventory List";
 }
+
 
 <h2>Inventory List</h2>
 
@@ -19,24 +20,15 @@
         </tr>
     </thead>
     <tbody>
-        @if (!Model.Any())
+        @foreach (var inventory in Model)
         {
             <tr>
-                <td colspan="5" class="text-center">No data yet.</td>
+                <td>@inventory.ItemName</td>
+                <td>@inventory.AmountSold</td>
+                <td>@inventory.TotalPrice</td>
+                <td>@inventory.DateSold.ToShortDateString()</td>
+                <td>@inventory.ItemType</td>
             </tr>
-        }
-        else
-        {
-            foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.ItemName</td>
-                    <td>@item.AmountSold</td>
-                    <td>@item.TotalPrice</td>
-                    <td>@item.DateSold.ToShortDateString()</td>
-                    <td>@item.ItemType</td>
-                </tr>
-            }
         }
     </tbody>
 </table>
