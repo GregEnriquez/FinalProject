@@ -39,7 +39,7 @@ namespace FinalProject.Controllers
             await dbContext.Inventory.AddAsync(inventory);
             await dbContext.SaveChangesAsync();
 
-            return View();
+            return RedirectToAction("Index");
         }
 
         //Shows database in page
@@ -49,6 +49,35 @@ namespace FinalProject.Controllers
             var inventory = await dbContext.Inventory.ToListAsync();
             
             return View(inventory);
+        }
+
+        //Gets the item with the specific Id and puts them to the Edit page
+        [HttpGet]
+        public async Task<IActionResult> Edit(int Id)
+        {
+            var inventory = await dbContext.Inventory.FindAsync(Id);
+
+            return View(inventory);
+        }
+
+        //Edits the database with the changes made to the form and shows it in Index
+        [HttpPost]
+        public async Task<IActionResult> Edit(Inventory viewModel)
+        {
+            var inventory = await dbContext.Inventory.FindAsync(viewModel.Id);
+
+            if (inventory is not null)
+            {
+                inventory.ItemName = viewModel.ItemName;
+                inventory.AmountSold = viewModel.AmountSold;
+                inventory.TotalPrice = viewModel.TotalPrice;
+                inventory.DateSold = viewModel.DateSold;
+                inventory.ItemType = viewModel.ItemType;
+
+                await dbContext.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

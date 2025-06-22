@@ -17,6 +17,7 @@
             <th>Total Price</th>
             <th>Date Sold</th>
             <th>Item Type</th>
+            <th> </th>
         </tr>
     </thead>
     <tbody>
@@ -28,6 +29,9 @@
                 <td>@inventory.TotalPrice</td>
                 <td>@inventory.DateSold.ToShortDateString()</td>
                 <td>@inventory.ItemType</td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="Inventory" asp-action="Edit" asp-route-id="@inventory.Id"> Edit </a>
+                </td>
             </tr>
         }
     </tbody>
