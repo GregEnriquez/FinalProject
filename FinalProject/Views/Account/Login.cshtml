@@ -1,0 +1,35 @@
+﻿@model FinalProject.Models.Entities.User
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div style="
+    background-color: #fff7e6;
+    min-height: 90vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;">
+    
+    <div style="width: 100%; max-width: 500px;">
+        <h2 class="text-center mb-4" style="color: #594100">Login</h2>
+
+        <form asp-action="Login" method="post">
+            <div class="mb-3">
+                <label asp-for="Username" class="form-label">Username</label>
+                <input asp-for="Username" class="form-control" style="border: 2px solid #594100;" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label">Password</label>
+                <input asp-for="Password" type="password" class="form-control" style="border: 2px solid #594100;" />
+            </div>
+            <button type="submit" class="btn w-100 fw-bold" style="background-color: #CA7842; color: #3B060A;">Login</button>
+        </form>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="text-danger text-center mt-2">@ViewBag.Error</div>
+        }
+    </div>
+</div>

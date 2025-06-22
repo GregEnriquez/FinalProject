@@ -4,35 +4,52 @@
     ViewData["Title"] = "Inventory List";
 }
 
+<h2 class="text-center mb-4" style="color: #594100">Inventory List</h2>
 
-<h2>Inventory List</h2>
-
-<a asp-action="Create" class="btn btn-primary mb-3">Add New Item</a>
-
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Item Name</th>
-            <th>Amount Sold</th>
-            <th>Total Price</th>
-            <th>Date Sold</th>
-            <th>Item Type</th>
-            <th> </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var inventory in Model)
-        {
+<div style="border: 5px solid #594100; border-radius: 10px; overflow: hidden;">
+    <table class="table table-hover table-striped mb-0">
+        <thead class="text-center" style="background-color: #FBDB93; color: #594100">
             <tr>
-                <td>@inventory.ItemName</td>
-                <td>@inventory.AmountSold</td>
-                <td>@inventory.TotalPrice</td>
-                <td>@inventory.DateSold.ToShortDateString()</td>
-                <td>@inventory.ItemType</td>
-                <td>
-                    <a class="btn btn-primary" asp-controller="Inventory" asp-action="Edit" asp-route-id="@inventory.Id"> Edit </a>
-                </td>
+                <th>Item Name</th>
+                <th>Amount Sold</th>
+                <th>Total Price</th>
+                <th>Date Sold</th>
+                <th>Item Type</th>
+                <th> </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody style="background-color: #FCEFCB; color: #594100">
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="6" class="text-center">No data yet.</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var inventory in Model)
+                {
+                    <tr class="text-center">
+                        <td>@inventory.ItemName</td>
+                        <td>@inventory.AmountSold</td>
+                        <td>@inventory.TotalPrice</td>
+                        <td>@inventory.DateSold.ToShortDateString()</td>
+                        <td>@inventory.ItemType</td>
+                        <td>
+                            <a class="btn fw-bold" style="background-color: #DCA06D; color: #594100;"
+                                onmouseover="this.style.backgroundColor='#E9A319'"
+                                onmouseout="this.style.backgroundColor='#DCA06D'"
+                                asp-controller="Inventory" asp-action="Edit" asp-route-id="@inventory.Id"> Edit </a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="d-flex justify-content-end mt-3">
+    <a asp-action="Create" class="btn fw-bold" style="background-color: #DCA06D; color: #594100;"
+       onmouseover="this.style.backgroundColor='#E9A319'"
+       onmouseout="this.style.backgroundColor='#DCA06D'">Add New Item</a>
+</div>

@@ -11,5 +11,8 @@ namespace FinalProject.Data
         }
 
         public DbSet<Inventory> Inventory { get; set; }
+
+        public DbSet<User> Users { get; set; }
+
     }
 }
