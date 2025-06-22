@@ -38,6 +38,7 @@ else
             <input asp-for="ItemType" class="form-control" />
         </div>
         <button type="submit" class="btn btn-success">Save</button>
+        <button type="submit" class="btn btn-danger" asp-action="Delete" asp-asp-controller="Inventory">Delete</button>
         <a asp-action="Index" class="btn btn-danger">Cancel</a>
     </form>
 }

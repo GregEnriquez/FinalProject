@@ -79,5 +79,19 @@ namespace FinalProject.Controllers
 
             return RedirectToAction("Index");
         }
+
+        //Deletes an item with the found Id from the database
+        [HttpPost]
+        public async Task<IActionResult> Delete(Inventory viewModel)
+        {
+            var inventory = await dbContext.Inventory.AsNoTracking().FirstOrDefaultAsync(x => x.Id == viewModel.Id);
+            if (inventory is not null)
+            {
+                dbContext.Inventory.Remove(viewModel);
+                await dbContext.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }
